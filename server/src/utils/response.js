@@ -9,10 +9,6 @@ export const errorRes = (next, code, message) => {
   return next(error);
 };
 
-// const unauthorizedResponse = (res, error, status = 'error') => res.status(401).json({
-//   status,
-//   error: error || 'Unauthorized',
-// });
 
 /**
  * Returns response to the user
