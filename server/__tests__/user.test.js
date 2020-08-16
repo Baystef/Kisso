@@ -3,12 +3,12 @@ import app from '..';
 import testDB from '../test-data/db-test';
 import { user, newUser } from '../test-data';
 
-let server, agent, adminToken, userToken;
+let server, agent, userToken;
 const { start, stop } = testDB;
 
 
 beforeAll(async (done) => {
-  await start('mock-pl-users');
+  await start('DaUsa-test');
   server = app.listen(3400, () => {
     agent = request.agent(server);
     done();
@@ -47,7 +47,6 @@ describe('Authentication routes', () => {
     expect(res.statusCode).toEqual(200);
     expect(res.body.data.token).toBeTruthy();
     expect(res.body.data._id).toBeTruthy();
-    expect(res.body.data.isAdmin).toBeFalsy();
   });
 
   it('should not  sign in a non-existing user and return 401', async () => {

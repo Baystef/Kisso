@@ -1,5 +1,5 @@
 import { validationResult } from 'express-validator';
-import { badRequestResponse } from '../utils/response';
+import { errorRes } from '../utils/response';
 import { signupValidate, signinValidate } from './user-validate';
 
 
@@ -38,7 +38,7 @@ class Validate {
     if (errors.isEmpty()) {
       return next();
     }
-    return badRequestResponse(res, errors.array()[0].msg);
+    return errorRes(next, 400, errors.array()[0].msg);
   }
 }
 

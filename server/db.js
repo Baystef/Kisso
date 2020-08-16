@@ -1,4 +1,3 @@
-/* eslint-disable no-confusing-arrow */
 import mongoose from 'mongoose';
 
 const env = process.env.NODE_ENV;
