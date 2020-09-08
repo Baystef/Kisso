@@ -14,8 +14,8 @@ router.post('/signup', validate('signup'), checkValidationResult, signUp);
 // User signin
 router.post('/signin', validate('signin'), checkValidationResult, signIn);
 
-// Add new user
-router.post('/users', authentication, validate('signup'), checkValidationResult, addUser)
+// Add new user  //validate('signup'), checkValidationResult,
+router.post('/users', authentication, addUser)
 
 // Get all users
 router.get('/users', authentication, getUsers);

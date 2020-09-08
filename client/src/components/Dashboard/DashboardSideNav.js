@@ -1,19 +1,22 @@
 import React from 'react';
-import userApi from '../api/userApi';
+import { NavLink } from 'react-router-dom'
+import { useAuth } from '../../context/AuthContext';
 
-const DashboardSideNav = ({ user, logout }) => {
+const DashboardSideNav = ({ match }) => {
+  const { user, logout } = useAuth();
+
   return (
     <>
       <div className="flex flex-row border-b items-center justify-between pb-2">
         {/* <!-- Header --> */}
         <span className="text-lg font-semibold capitalize dark:text-gray-300">
           Profile
-			</span>
+			  </span>
 
         <span className="relative ">
           <a
             className="hover:text-green-500 dark-hover:text-green-300
-					text-gray-600 dark:text-gray-300"
+					 text-gray-600 dark:text-gray-300"
             href="inbox/">
             <svg
               width="24"
@@ -44,29 +47,22 @@ const DashboardSideNav = ({ user, logout }) => {
           alt="enoshima profile" />
         <h2
           className="mt-4 text-xl dark:text-gray-300 font-extrabold capitalize">
-          Hello {user && user.firstName}
+          Hello {user.firstName}
         </h2>
-         <span className="text-sm dark:text-gray-300">
+        <span className="text-sm dark:text-gray-300">
           <span className="font-semibold text-green-600 dark:text-green-300">
             Admin
 				 </span>
         </span>
       </div>
 
-      <button
-        className="mt-8 flex items-center justify-between py-3 px-2 text-white
-			dark:text-gray-200 bg-green-400 dark:bg-green-500 rounded-lg shadow">
-        {/* <!-- Action --> */}
-        <span>Add user</span>
-        <svg className="h-5 w-5 fill-current" viewBox="0 0 24 24">
-          <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"></path>
-        </svg>
-      </button>
-
       <ul className="mt-2 text-gray-600">
         {/* <!-- Links --> */}
-        <li className="mt-8">
-          <a href="#home" className="flex ">
+        <li className="mt-5">
+          <NavLink exact to={match.url}
+            className="flex pl-4 -ml-4 items-center"
+            activeClassName="shadow py-2 bg-white dark:bg-gray-200 rounded-lg"
+          >
             <svg
               className="fill-current h-5 w-5 dark:text-gray-300"
               viewBox="0 0 24 24">
@@ -75,18 +71,17 @@ const DashboardSideNav = ({ user, logout }) => {
 							4h4V4h-4m-6 10h4v-4h-4m-6 4h4v-4H4m0 10h4v-4H4m6
 							4h4v-4h-4M4 8h4V4H4v4z"></path>
             </svg>
-            <span
-              className="ml-2 capitalize font-medium text-black
-						dark:text-gray-300">
-              dashboard
-					</span>
-          </a>
+            <span className="ml-2 capitalize font-medium">
+              profile
+					  </span>
+          </NavLink>
         </li>
 
-        <li
-          className="mt-8 shadow py-2 bg-white dark:bg-gray-200 rounded-lg
-				-ml-4">
-          <a href="#home" className="flex pl-4">
+        <li className="mt-5">
+          <NavLink to={`${match.url}/users`}
+            className="flex pl-4 -ml-4 items-center "
+            activeClassName="shadow py-2 bg-white dark:bg-gray-200 rounded-lg"
+          >
             <svg className="fill-current h-5 w-5" viewBox="0 0 24 24">
               <path
                 d="M12 4a4 4 0 014 4 4 4 0 01-4 4 4 4 0 01-4-4 4 4 0
@@ -94,14 +89,39 @@ const DashboardSideNav = ({ user, logout }) => {
 							8-4z"></path>
             </svg>
             <span className="ml-2 capitalize font-medium">users</span>
-          </a>
+          </NavLink>
+        </li>
+
+        <li className="mt-5">
+          <NavLink to={`${match.url}/add-new`}
+            className="flex pl-4 -ml-4 items-center"
+            activeClassName="shadow py-2 bg-white dark:bg-gray-200 rounded-lg"
+          >
+            <svg className="h-5 w-5 fill-current" viewBox="0 0 24 24">
+              <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"></path>
+            </svg>
+            <span className="ml-2 capitalize font-medium">
+              Add User
+					  </span>
+          </NavLink>
+        </li>
+
+        <li className="mt-5">
+          <NavLink to={`${match.url}/settings`}
+            className="flex pl-4 -ml-4 items-center"
+            activeClassName="shadow py-2 bg-white dark:bg-gray-200 rounded-lg"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 fill-current" viewBox="0 0 24 24"><path d="M24 14v-4h-3.23c-.229-1.003-.624-1.94-1.156-2.785l2.286-2.286-2.83-2.829-2.286 2.286c-.845-.532-1.781-.928-2.784-1.156v-3.23h-4v3.23c-1.003.228-1.94.625-2.785 1.157l-2.286-2.286-2.829 2.828 2.287 2.287c-.533.845-.928 1.781-1.157 2.784h-3.23v4h3.23c.229 1.003.624 1.939 1.156 2.784l-2.286 2.287 2.829 2.829 2.286-2.286c.845.531 1.782.928 2.785 1.156v3.23h4v-3.23c1.003-.228 1.939-.624 2.784-1.156l2.286 2.286 2.828-2.829-2.285-2.286c.532-.845.928-1.782 1.156-2.785h3.231zm-12 2c-2.209 0-4-1.791-4-4s1.791-4 4-4 4 1.791 4 4-1.791 4-4 4z"/></svg>
+            <span className="ml-2 capitalize font-medium">
+              Settings
+					  </span>
+          </NavLink>
         </li>
 
       </ul>
 
-      <div onClick={logout} className="mt-auto flex items-center text-red-700 dark:text-red-400">
-        {/* <!-- important action --> */}
-        <a href="#home" className="flex items-center">
+      <div  className="mt-auto flex items-center text-red-700 dark:text-red-400">
+        <p onClick={logout} className="flex items-center">
           <svg className="fill-current h-5 w-5" viewBox="0 0 24 24">
             <path
               d="M16 17v-3H9v-4h7V7l5 5-5 5M14 2a2 2 0 012
@@ -109,7 +129,7 @@ const DashboardSideNav = ({ user, logout }) => {
 						0 012-2h9z"></path>
           </svg>
           <span className="ml-2 capitalize font-medium">log out</span>
-        </a>
+        </p>
       </div>
     </>
   );

@@ -5,7 +5,7 @@ const DashboardCard = ({ user, deleteAUser }) => {
 
   return (
     <div
-      className="mt-8 flex px-4 py-4 justify-around bg-white
+      className="mt-8 flex sm:flex-col lg:flex-row px-4 py-4 items-center justify-around sm:w-1/2 lg:w-full mx-auto bg-white
       dark:bg-gray-600 shadow-xl rounded-lg cursor-pointer">
       {/* <!-- Card --> */}
 
@@ -14,34 +14,34 @@ const DashboardCard = ({ user, deleteAUser }) => {
         src="https://appzzang.me/data/editor/1608/f9c387cb6bd7a0b004f975cd92cbe2d9_1471626325_6802.png"
         alt="" />
 
-      <div className="flex justify-evenly">
+      <div className="flex sm:flex-col lg:flex-row sm:items-center justify-evenly">
         <div
-          className="ml-4 flex flex-col capitalize text-gray-600
+          className="sm:ml-0 lg:ml-4 flex flex-col capitalize text-gray-600
 						dark:text-gray-400">
           <span>name</span>
-          <span className="mt-2 text-black dark:text-gray-200">
+          <span className="sm:mt-0 lg:mt-2 text-black dark:text-gray-200">
             {firstName} {lastName}
           </span>
         </div>
 
-        <div className="ml-12 mr-16 flex flex-col text-gray-600	dark:text-gray-400">
-          <span className="capitalize">login</span>
-          <span className="mt-2 text-black dark:text-gray-200">
+        <div className="sm:ml-0 lg:ml-12 sm:mr-0 lg:mr-16 sm:mt-2 lg:mt-0 flex flex-col text-gray-600	dark:text-gray-400">
+          <span className="capitalize">Email</span>
+          <span className="sm:mt-0 lg:mt-2 text-black dark:text-gray-200">
             {email}
           </span>
         </div>
 
         <div
-          className="mr-16 flex flex-col capitalize text-gray-600
+          className="sm:mr-0 lg:mr-16 sm:mt-2 lg:mt-0 flex flex-col capitalize text-gray-600
 						dark:text-gray-400">
           <span>job</span>
-          <span className="mt-2 text-black dark:text-gray-200">
+          <span className="sm:mt-0 lg:mt-2 text-black dark:text-gray-200">
             {job}
           </span>
         </div>
 
         <div
-          className="mr-16 flex flex-col capitalize text-gray-600
+          className="sm:mr-0 lg:mr-16 sm:mt-2 lg:mt-0 flex flex-col capitalize text-gray-600
 						dark:text-gray-400">
           <span>action</span>
           <button onClick={() => deleteAUser(_id)} className="bg-red-400 hover:bg-red-500 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center">

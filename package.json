@@ -2,25 +2,24 @@
   "name": "fullstack-test",
   "version": "1.0.0",
   "description": "Technical test for Full Stack Engineer position at Kisso",
-  "repository": "https://github.com/KissoHQ/fullstack-test",
-  "author": "Nazer Aminou <nazer@kissohq.com>",
+  "main": "index.js",
+  "repository": "https://github.com/Baystef/Kisso.git",
+  "author": "Adebayo <daramola.adebayo@yahoo.com>",
   "license": "MIT",
   "private": false,
   "dependencies": {
-    "@babel/preset-react": "^7.10.4",
     "@babel/runtime": "^7.11.2",
     "bcrypt": "^5.0.0",
     "cross-env": "^7.0.2",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-validator": "6.1.1",
-    "jest": "^26.4.0",
     "jsonwebtoken": "^8.5.1",
     "mongodb": "^3.6.0",
     "mongoose": "^5.9.29"
   },
   "scripts": {
-    "dev": "concurrently \"yarn server\" \"cd client && yarn client\"",
+    "dev": "concurrently \"yarn server\" \"cd client && yarn start\"",
     "server": "cross-env NODE_ENV=development babel-watch ./server/start.js",
     "start": "node build/start.js",
     "build": "babel server --out-dir build",
@@ -30,18 +29,6 @@
     "heroku:unseed": "node ./build/src/schema/unseed",
     "test": "cross-env NODE_ENV=test && jest --timeOut=10000 --forceExit --detectOpenHandles --maxWorkers=1"
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
   "devDependencies": {
     "@babel/cli": "^7.10.5",
     "@babel/core": "^7.11.1",
@@ -50,6 +37,7 @@
     "@babel/preset-env": "^7.11.0",
     "babel-watch": "^7.0.0",
     "concurrently": "^5.3.0",
+    "jest": "^26.4.0",
     "supertest": "^4.0.2"
   }
 }
